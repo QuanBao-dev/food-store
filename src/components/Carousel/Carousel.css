@@ -1,0 +1,12 @@
+.carousel-slide-list{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+}
+
+.carousel-slide-list-wrapper{
+  display: flex;
+  width: 100%;
+  touch-action: pan-y;
+}
