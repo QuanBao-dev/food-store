@@ -1,0 +1,101 @@
+.what-we-have-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0;
+  box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.151);
+  width: 74%;
+  margin: auto;
+  font-family: Roboto, sans-serif;
+  background-color: white;
+}
+
+.what-we-have-container > div:nth-child(1){
+  color: rgb(255, 166, 0);
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.what-we-have-container > div:nth-child(2){
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0.2rem 0
+}
+
+.carousel-food-category{
+  overflow: hidden;
+  width: 100%;
+  margin-top: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel-food-category-wrapper{
+  display: flex;
+  width: 100%;
+  touch-action: pan-y;
+  margin-bottom: 2rem;
+}
+
+.food-slide-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.food-slide-item:hover img{
+  box-shadow: 0 0 5px 1px rgba(85, 85, 85, 0.527);
+}
+
+.food-slide-item:hover div{
+  color: rgb(255, 81, 0);
+}
+
+.food-slide-item img{
+  width:40%;
+  transition: 0.5s;
+  padding: 1.7rem;
+  box-shadow: 0 0 5px 3px rgba(151, 151, 151, 0.123);
+  margin-bottom: 2rem;
+}
+
+.food-slide-item div{
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 550;
+  white-space: nowrap;
+}
+
+.container-carousel-food-category{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.container-carousel-food-category .arrow-left-container,
+.container-carousel-food-category .arrow-right-container{
+  padding: 0.7rem 1rem;
+  display: flex;
+  box-shadow: 0 0 5px 1px rgba(134, 134, 134, 0.233);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.container-carousel-food-category .arrow-left-container:hover,
+.container-carousel-food-category .arrow-right-container:hover{
+  box-shadow: 0 0 3px 1px rgba(104, 104, 104, 0.678);
+}
+
+.container-carousel-food-category .arrow-left-container{
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+.container-carousel-food-category .arrow-right-container{
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+}
