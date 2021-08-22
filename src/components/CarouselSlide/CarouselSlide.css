@@ -1,0 +1,52 @@
+.carousel-slide-container{
+  height: 800px;
+  color: white;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  min-width: 100%;
+  justify-content: center;
+}
+
+.carousel-slide-wrapper{
+  width: 76%;
+}
+
+.carousel-slide-wrapper .title-1{
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.carousel-slide-wrapper .title-2{
+  font-size: 4.2rem;
+  margin: 0;
+  font-family: Roboto;
+  font-weight: 700;
+}
+
+.carousel-slide-wrapper .title-2.red{
+  color: rgb(255, 80, 80);
+}
+
+.carousel-slide-container .button-carousel-slide{
+  background-color: rgb(255, 80, 80);
+  color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 0.8rem 1rem;
+  text-transform: uppercase;
+  font-weight: 550;
+  margin-top: 2rem;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.carousel-slide-container .button-carousel-slide:hover{
+  background-color: rgb(156, 55, 55);
+}
+
+.carousel-slide-container .button-carousel-slide span{
+  margin-left: 0.5rem;
+}
