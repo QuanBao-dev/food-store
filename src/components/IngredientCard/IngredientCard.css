@@ -1,0 +1,50 @@
+.ingredient-card-container{
+  max-width: 330px;
+  padding: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 4rem;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  font-family: Roboto, san-serif;
+  color: black;
+  position: relative;
+  transition: 0.5s;
+}
+
+.ingredient-card-container .title-heading{
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.ingredient-card-container .ingredient-description{
+  color: grey;
+  line-height: 1.6rem;
+  transition: 0.5s;
+}
+
+.ingredient-card-container:hover{
+  background-color: rgb(255, 72, 0);
+  color: white;
+  transform: translateY(-10px)!important;
+}
+
+.ingredient-card-container:hover .ingredient-description{
+  color: white;
+}
+
+.ingredient-card-container .ingredient-number{
+  position: absolute;
+  top: -30px;
+  left: 20px;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  color: black;
+  display: flex;
+  font-size: 1.4rem;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.336);
+  background-color: white;
+}
