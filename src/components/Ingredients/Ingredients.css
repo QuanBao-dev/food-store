@@ -1,0 +1,52 @@
+.ingredients-container{
+  background-image: url(https://food-g-app.web.app/static/media/ingredients.be8ce5f7.jpg);
+  background-size: cover;
+  min-height: 800px;
+  padding: 0 1rem;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ingredients-column-section{
+  display: flex;
+  flex-direction: column;
+  min-height: 760px;
+  justify-content: space-between;
+}
+
+.ingredients-column-section.left{
+  align-items: flex-start;
+}
+
+.ingredients-column-section.right{
+  align-items: flex-end;
+}
+
+.ingredients-column-section.left .ingredient-card-container:nth-child(2){
+  margin-left: 3.5rem;
+}
+
+.ingredients-column-section.right .ingredient-card-container:nth-child(2){
+  margin-right: 3.5rem;
+}
+
+.ingredients-column-section-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  width: 50%;
+  min-width: 320px;
+}
+
+.ingredients-column-section-container.left .ingredients-ribbon{
+  margin-right: 3rem;
+}
+
+.ingredients-column-section-container.right .ingredients-ribbon{
+  margin-left: 3rem;
+}
