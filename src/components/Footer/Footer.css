@@ -1,0 +1,74 @@
+.footer-container{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: auto;
+  justify-content: space-between;
+  background-color: rgb(37, 37, 37);
+  color: white;
+  padding: 5rem 0 3.5rem 0;
+  font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-wrapper{
+  width: 76%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-schedule{
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  margin-right: 10rem;
+}
+
+.footer-map{
+  width: 50%;
+}
+
+.footer-map iframe{
+  height: 100%;
+  width: 100%;
+}
+
+.date-week-schedule,
+.time-start-schedule,
+.time-close-schedule{
+  line-height: 2rem;
+}
+
+.time-start-schedule,
+.time-close-schedule{
+  color: rgb(255, 192, 55);
+}
+
+.address-contact-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.address-contact-container > div:nth-child(2){
+  line-height: 2rem;
+}
+
+.footer-wrapper h2{
+  margin-bottom: 1rem;
+}
+
+.address-contact-item i{
+  color: rgb(255, 192, 55);
+  margin-right: 0.4rem;
+}
+
+.social-web-container{
+  margin-top: 1.2rem;
+}
+
+.social-web-container span{
+  margin-right: 1rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+}

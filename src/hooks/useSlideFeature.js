@@ -1,5 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { filter, fromEvent, interval, tap, withLatestFrom } from "rxjs";
+import {
+  debounceTime,
+  filter,
+  fromEvent,
+  interval,
+  takeWhile,
+  tap,
+  timer,
+  withLatestFrom,
+} from "rxjs";
 
 import { mobileAndTabletCheck } from "../util/checkMobileDevice";
 
@@ -30,7 +39,8 @@ export const useSlideFeature = (
   { initIsIntervalModeRef, secondTimeInterval },
   timeoutRef,
   setRealPage,
-  realPage
+  realPage,
+  isDisplayLayerBlock
 ) => {
   const [isMobile, setIsMobile] = useState();
   const [widthEachItem, setWidthEachItem] = useState();
@@ -38,14 +48,16 @@ export const useSlideFeature = (
   const posX1 = useRef(0);
   const posX2 = useRef(0);
   const delta = useRef(0);
-  const isIntervalMode = useRef(initIsIntervalModeRef.current);
+  const [isIntervalMode, setIsIntervalMode] = useState(
+    initIsIntervalModeRef.current
+  );
 
   useEffect(() => {
     sliderWrapperRef.current.style.transform = `translateX(${
       widthEachItem * (amountProductsEachPage - pageActive)
     }px)`;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amountProductsEachPage, pageActive, widthEachItem]);
+  }, [realPage, amountProductsEachPage, pageActive, widthEachItem]);
   useAutoSlideCarousel(
     secondTimeInterval,
     isIntervalMode,
@@ -69,14 +81,17 @@ export const useSlideFeature = (
     realPage,
     timeoutRef,
     setPageActive,
-    setRealPage
+    setRealPage,
+    isIntervalMode,
+    setIsIntervalMode,
+    initIsIntervalModeRef
   );
 
   useMouseDownSlide(
     sliderWrapperRef,
     isMouseDown,
     isMobile,
-    setIsDisplayLayerBlock,
+    setIsIntervalMode,
     isIntervalMode,
     timeoutRef
   );
@@ -96,7 +111,8 @@ export const useSlideFeature = (
     initIsIntervalModeRef,
     lengthOfDataRawList,
     setRealPage,
-    realPage
+    realPage,
+    setIsIntervalMode
   );
   useMouseMoveSlide(
     sliderWrapperRef,
@@ -108,7 +124,11 @@ export const useSlideFeature = (
     pageActive,
     isMobile,
     amountProductsEachPage,
-    lengthOfDataRawList
+    lengthOfDataRawList,
+    setIsDisplayLayerBlock,
+    isDisplayLayerBlock,
+    isIntervalMode,
+    setIsIntervalMode
   );
 };
 
@@ -122,38 +142,70 @@ const useResizeSlideOnResize = (
   page,
   timeoutRef,
   setPageActive,
-  setRealPage
+  setRealPage,
+  isIntervalMode,
+  setIsIntervalMode,
+  initIsIntervalModeRef
 ) => {
   useEffect(() => {
     const widthSlideItem =
       sliderContainerRef.current.offsetWidth / amountSlideItemEachPage;
     setWidthSlideItem(widthSlideItem);
+    updatePageActiveSlide(
+      sliderContainerRef,
+      page,
+      false,
+      timeoutRef,
+      setPageActive,
+      setRealPage
+    );
     setIsMobile(mobileAndTabletCheck());
-    const subscription = fromEvent(window, "resize").subscribe(() => {
-      const widthSlideItem =
-        sliderContainerRef.current.offsetWidth / amountSlideItemEachPage;
-      setWidthSlideItem(widthSlideItem);
-      updatePageActiveSlide(
-        sliderContainerRef,
-        page,
-        false,
-        timeoutRef,
-        setPageActive,
-        setRealPage
-      );
-      setIsMobile(mobileAndTabletCheck());
-      if (arrayWidthCondition)
-        arrayWidthCondition.forEach(({ minWidth, maxWidth, amount }) => {
-          if (window.innerWidth > minWidth && window.innerWidth <= maxWidth) {
-            setAmountSlideItemEachPage(amount);
-          }
-        });
-    });
+    if (arrayWidthCondition)
+      arrayWidthCondition.forEach(({ minWidth, maxWidth, amount }) => {
+        if (
+          window.screen.availWidth > minWidth &&
+          window.screen.availWidth <= maxWidth
+        ) {
+          setAmountSlideItemEachPage(amount);
+        }
+      });
+    const subscription = fromEvent(window, "resize")
+      .pipe(
+        tap(() => {
+          sliderContainerRef.current.style.transition = "0s";
+          const widthSlideItem =
+            sliderContainerRef.current.offsetWidth / amountSlideItemEachPage;
+          setWidthSlideItem(widthSlideItem);
+          updatePageActiveSlide(
+            sliderContainerRef,
+            page,
+            false,
+            timeoutRef,
+            setPageActive,
+            setRealPage
+          );
+          if (arrayWidthCondition)
+            arrayWidthCondition.forEach(({ minWidth, maxWidth, amount }) => {
+              if (
+                window.screen.availWidth > minWidth &&
+                window.screen.availWidth <= maxWidth
+              ) {
+                setAmountSlideItemEachPage(amount);
+              }
+            });
+          setIsIntervalMode(false);
+        }),
+        debounceTime(1000)
+      )
+      .subscribe(() => {
+        setIsMobile(mobileAndTabletCheck());
+        if (initIsIntervalModeRef.current === true) setIsIntervalMode(true);
+      });
     return () => {
       subscription.unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amountSlideItemEachPage]);
+  }, [isIntervalMode, amountSlideItemEachPage]);
 };
 
 export const useAutoSlideCarousel = (
@@ -171,9 +223,9 @@ export const useAutoSlideCarousel = (
   useEffect(() => {
     const subscription = interval(timeInterval * 1000)
       .pipe(
-        filter(() => isIntervalMode.current),
+        takeWhile(() => isIntervalMode),
         withLatestFrom(
-          interval(500).pipe(
+          timer(500).pipe(
             tap(() => {
               if (Math.abs(realPage - pageActive) === dataListRawLength) {
                 updatePageActiveSlide(
@@ -187,33 +239,38 @@ export const useAutoSlideCarousel = (
               }
             })
           )
-        ),
-        tap(() => {
-          handleClickGoForwardPageIntervalCarousel(
-            realPage,
-            amountProductsEachPage,
-            dataListRawLength,
-            timeoutRef,
-            carouselFoodCategoryWrapperRef,
-            setPageActive,
-            setRealPage,
-            pageActive
-          );
-        })
+        )
       )
-      .subscribe(() => {});
+      .subscribe(() => {
+        handleClickGoForwardPageIntervalCarousel(
+          realPage,
+          amountProductsEachPage,
+          dataListRawLength,
+          timeoutRef,
+          carouselFoodCategoryWrapperRef,
+          setPageActive,
+          setRealPage,
+          pageActive
+        );
+      });
     return () => {
       subscription.unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageActive, realPage, amountProductsEachPage, timeInterval]);
+  }, [
+    isIntervalMode,
+    pageActive,
+    realPage,
+    amountProductsEachPage,
+    timeInterval,
+  ]);
 };
 
 const useMouseDownSlide = (
   sliderContainerRef,
   isMouseDown,
   isMobile,
-  setIsDisplayLayerBlock,
+  setIsIntervalMode,
   isIntervalMode,
   timeoutRef
 ) => {
@@ -224,10 +281,9 @@ const useMouseDownSlide = (
     ).subscribe((e) => {
       clearTimeout(timeoutRef.current);
       if (!isMobile) e.preventDefault();
-      if (isIntervalMode) isIntervalMode.current = false;
+      if (isIntervalMode) setIsIntervalMode(false);
       sliderContainerRef.current.style.cursor = "grabbing";
       isMouseDown.current = true;
-      if (setIsDisplayLayerBlock) setIsDisplayLayerBlock(true);
     });
     return () => {
       subscription.unsubscribe();
@@ -252,14 +308,14 @@ const useMouseUpSlide = (
   initIsIntervalMode,
   lengthOfDataRawList,
   setRealPage,
-  realPage
+  realPage,
+  setIsIntervalMode
 ) => {
   useEffect(() => {
     const subscription = fromEvent(window, isMobile ? "touchend" : "mouseup")
       .pipe(filter(() => isMouseDown.current))
       .subscribe(() => {
-        if (isIntervalMode && initIsIntervalMode.current === true)
-          isIntervalMode.current = true;
+        if (initIsIntervalMode.current === true) setIsIntervalMode(true);
         if (setIsDisplayLayerBlock) setIsDisplayLayerBlock(false);
         const currentOffsetLeft = extractTranslateX(
           sliderContainerRef.current.style.transform
@@ -320,7 +376,14 @@ const useMouseUpSlide = (
       subscription.unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [realPage, pageActive, widthEachItem, isMobile, lengthOfDataRawList]);
+  }, [
+    isIntervalMode,
+    realPage,
+    pageActive,
+    widthEachItem,
+    isMobile,
+    lengthOfDataRawList,
+  ]);
 };
 const useMouseMoveSlide = (
   sliderContainerRef,
@@ -332,12 +395,19 @@ const useMouseMoveSlide = (
   pageActive,
   isMobile,
   amountElementPerPage,
-  dataRawListLength
+  dataRawListLength,
+  setIsDisplayLayerBlock,
+  isDisplayLayerBlock,
+  isIntervalMode,
+  setIsIntervalMode
 ) => {
   useEffect(() => {
     const subscription = fromEvent(window, isMobile ? "touchmove" : "mousemove")
       .pipe(filter(() => isMouseDown.current))
       .subscribe((e) => {
+        if (setIsDisplayLayerBlock && !isDisplayLayerBlock)
+          setIsDisplayLayerBlock(true);
+        if (isIntervalMode) setIsIntervalMode(false);
         const currentOffsetLeft =
           (amountElementPerPage - pageActive) * widthEachItem;
         if (!isMobile) posX2.current = posX1.current - e.clientX;

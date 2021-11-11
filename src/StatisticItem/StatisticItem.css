@@ -1,0 +1,15 @@
+.statistic-item-container{
+  margin: 1.4rem;
+}
+
+.statistic-item-container div:nth-child(1) {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.statistic-item-container div:nth-child(2){
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-align: center;
+}

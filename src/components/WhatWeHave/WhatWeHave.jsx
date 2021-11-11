@@ -1,5 +1,8 @@
 import "./WhatWeHave.css";
 
+import { useRef } from "react";
+
+import { useContainerResponsive } from "../../hooks/useContainerResponsive";
 import {
   handleClickGoBackPage,
   handleClickGoForwardPage,
@@ -7,7 +10,6 @@ import {
   useSlideFeature,
 } from "../../hooks/useSlideFeature";
 import { useViewportAnimationDisplay } from "../../hooks/useViewportAnimationDisplay";
-import { useRef } from "react";
 
 let dataListRaw = [
   {
@@ -68,18 +70,44 @@ const WhatWeHave = () => {
   const isIntervalMode = isIntervalModeRef;
   const timeout = timeoutRef;
   const whatWeHaveContainerRef = useRef();
+  const containerCarouselFoodCategoryRef = useRef();
+  const heading1Ref = useRef();
+  const heading2Ref = useRef();
+  useContainerResponsive(whatWeHaveContainerRef);
   useViewportAnimationDisplay(
-    whatWeHaveContainerRef,
+    heading1Ref,
     0.5,
     {
       opacity: 0,
-      transform: "translateY(10px)",
+    },
+    {
+      opacity: 1,
+    },
+    0
+  );
+  useViewportAnimationDisplay(
+    heading2Ref,
+    0.5,
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+    },
+    0.3
+  );
+  useViewportAnimationDisplay(
+    containerCarouselFoodCategoryRef,
+    0.5,
+    {
+      opacity: 0,
+      transform: "translateY(30px)",
     },
     {
       opacity: 1,
       transform: "translateY(0)",
     },
-    0
+    0.5
   );
   useSlideFeature(
     carouselFoodCategoryWrapperRef,
@@ -96,9 +124,29 @@ const WhatWeHave = () => {
           amount: 7,
         },
         {
-          minWidth: 800,
+          minWidth: 1200,
           maxWidth: 1500,
           amount: 6,
+        },
+        {
+          minWidth: 1000,
+          maxWidth: 1200,
+          amount: 5,
+        },
+        {
+          minWidth: 900,
+          maxWidth: 1000,
+          amount: 4,
+        },
+        {
+          maxWidth: 900,
+          minWidth: 800,
+          amount: 3,
+        },
+        {
+          maxWidth: 800,
+          minWidth: 0,
+          amount: 2,
         },
       ],
       setAmountProductsEachPage: setAmountProductsEachPage,
@@ -106,14 +154,18 @@ const WhatWeHave = () => {
     { initIsIntervalModeRef: isIntervalMode, secondTimeInterval: 2 },
     timeout,
     setRealPage,
-    realPage
+    realPage,
+    isDisplayLayerBlock
   );
 
   return (
     <div className="what-we-have-container" ref={whatWeHaveContainerRef}>
-      <div>What we have</div>
-      <div>Browse food category</div>
-      <div className="container-carousel-food-category">
+      <div ref={heading1Ref}>What we have</div>
+      <div ref={heading2Ref}>Browse food category</div>
+      <div
+        className="container-carousel-food-category"
+        ref={containerCarouselFoodCategoryRef}
+      >
         <div
           className="arrow-left-container"
           onClick={handleClickGoBackPage(
@@ -153,13 +205,18 @@ const WhatWeHave = () => {
             {dataList.map((data, key) => (
               <div
                 key={key}
-                className="food-slide-item"
                 style={{
                   minWidth: `${100 / amountProductsEachPage}%`,
                 }}
               >
-                <img src={data.imageSrc} alt=""></img>
-                <div>{data.description}</div>
+                <div className="food-slide-item">
+                  <div className="food-item-wrapper">
+                    <div className="food-item-image-wrapper">
+                      <img src={data.imageSrc} alt=""></img>
+                    </div>
+                    <div>{data.description}</div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

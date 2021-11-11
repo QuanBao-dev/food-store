@@ -1,0 +1,14 @@
+.container-star-list{
+  margin-right: 0.3rem;
+  color: rgb(255, 196, 0);
+  margin-bottom: 0.5rem;
+}
+
+.container-star-list i{
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.container-star-list i.active{
+  color: black;
+}
