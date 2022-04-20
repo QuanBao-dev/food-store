@@ -1,0 +1,144 @@
+.sign-in-wrapper{
+  width: 400px;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  border-radius: 11px;
+  box-shadow: 0 0 4px 1px rgb(156, 156, 156);
+  align-items: center;
+  padding: 2rem;
+  overflow: hidden;
+  box-shadow: 0 0 5px 1px rgb(172, 172, 172);
+  background-color: white;
+  background-size: cover;
+  height: 500px;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sign-in-image-container{
+  min-width: 50%;
+}
+
+.sign-in-image-container img{
+  width: 100%;
+}
+
+
+.form-sign-in-wrapper{
+  min-width: 50%;
+}
+
+.form-sign-in{
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+}
+
+.form-sign-in button{
+  align-self: flex-end;
+}
+
+.button-submit-sign-in{
+  padding: 0.7rem 1rem;
+  background-color: red;
+  outline: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.button-submit-sign-in:active{
+  background-color: brown;
+}
+
+.background-wrapper{
+  background-image: url(https://food-g-app.web.app/static/media/banner-st.57953e4d.jpg);
+  padding: 3rem 0;
+  position: relative;
+  height: 600px;
+}
+
+.background-wrapper::before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.377);
+}
+
+.sign-in-wrapper h1{
+  margin: 0.4rem;
+}
+
+.sign-in-wrapper button{
+  padding: 0.5rem 1rem;
+  background-color: red;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  transition: 0.5s;
+  margin: 1.5rem 0 1rem 0;
+  outline: none;
+}
+
+.sign-in-wrapper button:active{
+  background-color: rgb(255, 65, 65)!important;
+}
+
+.sign-in-wrapper button:hover{
+  background-color: brown;
+}
+
+.sign-in-form-image-illustrator{
+  display: block;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-top: 1rem;
+}
+
+.remember-me-container{
+  margin-top: 1.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.remember-me-container input{
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+.remember-me-container label{
+  padding-left: 0.3rem;
+}
+
+.tab-title-name{
+  display: flex;
+  width: 100%;
+}
+
+.tab-title-name h1{
+  width: 50%;
+  margin: 0;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  border: 1px solid red;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.tab-title-name h1.active{
+  background-color: rgb(253, 80, 80);
+  color:white
+}
