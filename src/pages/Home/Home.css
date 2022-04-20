@@ -1,0 +1,62 @@
+.container-section-3{
+  padding: 4rem 0 ;
+  position: relative;
+  overflow: hidden;
+}
+
+.container-section-3 > img{
+  position: absolute;
+  z-index: -1;
+}
+
+.container-section-3 > img:nth-child(1){
+  top: -30px;
+  left: -70px;
+  animation: floating 4s infinite;
+  width: 400px;
+  height: 400px;
+}
+
+.container-section-3 > img:nth-child(2){
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  animation: zoomInAndOut 4s infinite;
+}
+
+.container-section-3 > img:nth-child(3){
+  bottom: 100px;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  animation: floating 4s infinite;
+}
+
+@keyframes floating{
+  0%{
+    transform: translateY(20px);
+  }
+
+  50%{
+    transform: translateY(0);
+  }
+
+  100%{
+    transform: translateY(20px);
+  }
+}
+
+@keyframes zoomInAndOut{
+  0%{
+    transform: scale(1.2);
+  }
+
+  50%{
+    transform: scale(1);
+  }
+
+  100%{
+    transform: scale(1.2);
+  }
+}
