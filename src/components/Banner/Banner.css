@@ -1,0 +1,37 @@
+.banner-container{
+  background-image: url(https://food-g-app.web.app/static/media/banner.10879cd6.jpg);
+  height: 400px;
+  align-items: center;
+  justify-content: center;
+  background-size: contain;
+  color: white;
+  display: flex;
+  background-position: center;
+  flex-direction: column
+}
+
+.banner-container h1{
+  text-transform: capitalize;
+}
+
+.banner-container ul{
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.banner-container ul li{
+  color: white;
+  text-transform: capitalize;
+}
+
+.banner-container ul li i{
+  width: 10px;height: 10px;
+  color: white;
+}
+
+.banner-container ul a{
+  text-decoration: none;
+}
