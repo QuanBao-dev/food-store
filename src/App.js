@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import ShopProductDetail from "./pages/ShopProductDetail/ShopProductDetail";
 import SignIn from "./pages/SignIn/SignIn";
 import Register from "./pages/Register/Register";
+import Checkout from "./pages/Checkout/Checkout";
 
 function App() {
   return (
@@ -17,10 +18,11 @@ function App() {
       <NavBar />
       <main className="main-content">
         <Switch>
-          <Route component={ShopProductDetail} path="/shop/:productId"  exact/>
+          <Route component={Checkout} path="/shop/checkout" exact />
+          <Route component={ShopProductDetail} path="/shop/:productId" exact />
           <Route component={Shop} path="/shop" exact />
           <Route component={SignIn} path="/login" exact />
-          <Route component={Register} path="/register" exact/>
+          <Route component={Register} path="/register" exact />
           <Route component={Home} path="/" exact />
         </Switch>
         <Footer />
