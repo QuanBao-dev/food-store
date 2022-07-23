@@ -5,3 +5,25 @@ body{
   box-sizing: border-box;
   overflow-x: hidden;
 }
+
+.check-box{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid rgb(173, 173, 173);
+  position: relative;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.check-box::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transition: 0.5s;
+  transform: translate(-52%, -52%);
+  border-radius: 50%;
+}

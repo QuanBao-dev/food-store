@@ -18,9 +18,16 @@ export const addToCart = (item, amount) => {
   };
 };
 
+export const reduceItemFromCart = (item, amount) => {
+  return {
+    type: actions.REDUCE_ITEM_FROM_CART,
+    payload: { item, amount },
+  };
+};
+
 export const removeFromCart = (item) => {
   return {
     type: actions.REMOVE_ITEM_FROM_CART,
-    payload: item,
+    payload: { item },
   };
 };

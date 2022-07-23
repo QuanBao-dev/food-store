@@ -30,7 +30,21 @@ const shopCart = (state = initialState, action) => {
     case actions.REMOVE_ITEM_FROM_CART:
       return {
         ...state,
-        cart: action.cart.filter((item) => item.title !== action.payload.title),
+        cart: state.cart.filter(
+          ({ item }) => item.productId !== action.payload.item.productId
+        ),
+      };
+    case actions.REDUCE_ITEM_FROM_CART:
+      const cart = state.cart.reduce((ans, data) => {
+        let temp = data.amount;
+        if (data.item.productId === action.payload.item.productId)
+          temp -= action.payload.amount;
+        ans.push({ amount: temp, item: data.item });
+        return ans;
+      }, []);
+      return {
+        ...state,
+        cart,
       };
     case actions.INIT_CART:
       return {

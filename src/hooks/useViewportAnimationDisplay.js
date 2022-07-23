@@ -9,12 +9,13 @@ export const useViewportAnimationDisplay = (
   delay
 ) => {
   useEffect(() => {
-    if (!elementRef.current) return;
+    // if (!elementRef.current) return;
     elementRef.current.style.transition = "0s";
     Object.keys(from).forEach((key) => {
       elementRef.current.style[key] = from[key];
     });
     const subscription = fromEvent(window, "scroll").subscribe(() => {
+      if(!elementRef.current) return;
       const { y, height } = elementRef.current.getBoundingClientRect();
       if (y - window.innerHeight + height < 60) {
         elementRef.current.style.transition = transition + "s";

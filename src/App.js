@@ -11,6 +11,7 @@ import ShopProductDetail from "./pages/ShopProductDetail/ShopProductDetail";
 import SignIn from "./pages/SignIn/SignIn";
 import Register from "./pages/Register/Register";
 import Checkout from "./pages/Checkout/Checkout";
+import Cart from "./pages/Cart/Cart";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <main className="main-content">
         <Switch>
           <Route component={Checkout} path="/shop/checkout" exact />
+          <Route component={Cart} path="/shop/cart" exact />
           <Route component={ShopProductDetail} path="/shop/:productId" exact />
           <Route component={Shop} path="/shop" exact />
           <Route component={SignIn} path="/login" exact />

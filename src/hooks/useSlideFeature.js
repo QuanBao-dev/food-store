@@ -292,6 +292,7 @@ const useMouseDownSlide = (
   }, [isMobile]);
 };
 
+let listWindowScrollY = [];
 const useMouseUpSlide = (
   sliderContainerRef,
   posX1,
@@ -370,6 +371,7 @@ const useMouseUpSlide = (
         posX1.current = 0;
         posX2.current = 0;
         delta.current = 0;
+        listWindowScrollY = [];
         isMouseDown.current = false;
       });
     return () => {
@@ -405,6 +407,20 @@ const useMouseMoveSlide = (
     const subscription = fromEvent(window, isMobile ? "touchmove" : "mousemove")
       .pipe(filter(() => isMouseDown.current))
       .subscribe((e) => {
+        if (isMobile) {
+          if (listWindowScrollY.length < 5) {
+            listWindowScrollY.push(window.scrollY);
+            return;
+          }
+          if (
+            listWindowScrollY.length === 5 &&
+            Math.abs(
+              listWindowScrollY[listWindowScrollY.length - 1] -
+                listWindowScrollY[0]
+            ) > 1
+          )
+            return;
+        }
         if (setIsDisplayLayerBlock && !isDisplayLayerBlock)
           setIsDisplayLayerBlock(true);
         if (isIntervalMode) setIsIntervalMode(false);
@@ -426,16 +442,6 @@ const useMouseMoveSlide = (
             pageEstimatedDownLimit +
             dataRawListLength -
             (amountElementPerPage - 2);
-          // console.log({
-          //   pageActive,
-          //   dataRawListLength,
-          //   newPageEstimated,
-          //   widthEachItem,
-          //   amountElementPerPage,
-          //   pageEstimatedUpLimit,
-          //   pageEstimatedDownLimit,
-          // });
-
           if (
             newPageEstimated >= pageEstimatedDownLimit &&
             newPageEstimated <= pageEstimatedUpLimit
