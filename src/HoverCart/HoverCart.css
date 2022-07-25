@@ -1,0 +1,116 @@
+.hover-cart-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  display: none;
+  transition: 0.5s;
+  padding-top: 3rem;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.277);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  display: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.hover-cart-wrapper::-webkit-scrollbar{
+  width: 5px;
+  height: 8px;
+  background-color: rgb(79, 42, 42);
+  border-radius: 10px;
+}
+
+.hover-cart-wrapper::-webkit-scrollbar-thumb{
+  background-color: rgb(240, 118, 88);
+  border-radius: 10px;
+}
+
+.hover-cart-wrapper {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  padding: 1rem;
+  padding-bottom: 0.2rem;
+  padding-right: 1.4rem;
+  max-height: 310px;
+  overflow: auto;
+  margin-top: 1rem;
+}
+
+.hover-cart-item-container {
+  display: block;
+  text-decoration: none;
+}
+
+.hover-cart-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: rgb(231, 229, 229);
+  border-radius: 10px;
+  padding-right: 0.5rem;
+  transition: 0.5s;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.hover-cart-item:hover {
+  background-color: rgb(250, 220, 201);
+}
+
+.hover-cart-detail {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hover-cart-wrapper img {
+  max-height: 100px;
+  width: 90px;
+}
+
+.hover-cart-detail h1 {
+  font-size: 0.8rem;
+}
+
+.hover-cart-detail h1,
+.hover-cart-detail div {
+  margin-left: 0.5rem;
+  color: black;
+}
+
+.container-buttons {
+  background-color: white;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.container-buttons button {
+  margin: 5px;
+  margin-top: 0;
+  cursor: pointer;
+  border: none;
+  background-color: rgb(255, 215, 215);
+  padding: 0.5rem;
+  transition: 0.5s;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.container-buttons button:hover {
+  background-color: rgb(255, 0, 0);
+  color: white;
+}
+.container-buttons a{
+  text-decoration: none;
+}
