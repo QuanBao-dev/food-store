@@ -61,7 +61,8 @@ const Checkout = ({
                         <i
                           className="fas fa-minus"
                           onClick={() => {
-                            reduceOneItemFromCart(item);
+                            if (amount > 1) return reduceOneItemFromCart(item);
+                            removeOneItemFromCart(item);
                           }}
                         ></i>
                       </span>

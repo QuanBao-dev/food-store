@@ -1,10 +1,13 @@
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import Banner from "../../components/Banner/Banner";
-import "./Cart.css";
+import './Cart.css';
+
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import Banner from '../../components/Banner/Banner';
 
 const Cart = ({ cart }) => {
   window.scroll({ top: 0 });
+  const history = useHistory();
   return (
     <div>
       <Banner url={window.location.href}></Banner>
@@ -46,14 +49,13 @@ const Cart = ({ cart }) => {
           </tbody>
         </table>
       </div>
-      <Link
-        to={"/shop/checkout"}
-        style={{
-          textDecoration: "none",
-        }}
+
+      <button
+        className="cart-button-submit"
+        onClick={() => history.push("/shop/checkout")}
       >
-        <button className="cart-button-submit">Go to checkout</button>
-      </Link>
+        Go to checkout
+      </button>
     </div>
   );
 };
