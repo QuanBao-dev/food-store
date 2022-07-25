@@ -17,7 +17,7 @@ const Cart = ({ cart }) => {
               <th>Price</th>
               <th>Location</th>
               <th>Rate</th>
-              <th className="round-border-top-right">Amount</th>
+              <th className="round-border-top-right">Quantity</th>
             </tr>
           </thead>
           <tbody>
