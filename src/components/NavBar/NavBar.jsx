@@ -109,7 +109,14 @@ const NavBar = ({ cart, initCartDispatch }) => {
                   isMobile={isMobileRef.current || isHide}
                 />
               </span>
-              <Link to="/login">Sign In</Link>
+              <Link
+                style={{
+                  zIndex: 30,
+                }}
+                to="/login"
+              >
+                Sign In
+              </Link>
             </div>
           )}
           {isHide && (
@@ -183,7 +190,7 @@ const NavBar = ({ cart, initCartDispatch }) => {
           </span>
           <Link
             style={{
-              marginLeft:"5rem"
+              marginLeft: "5rem",
             }}
             to="/login"
             onClick={() => {
