@@ -50,3 +50,9 @@
 .carousel-slide-container .button-carousel-slide span{
   margin-left: 0.5rem;
 }
+
+@media (max-width: 709px){
+  .carousel-slide-wrapper .title-2{
+    font-size: 3rem;
+  }
+}

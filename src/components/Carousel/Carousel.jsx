@@ -1,7 +1,11 @@
-import './Carousel.css';
-import { updatePageActiveSlide, useGenerateVariableCarousel, useSlideFeature } from '../../hooks/useSlideFeature';
-import CarouselSlide from '../CarouselSlide/CarouselSlide';
-import PagesCarousel from '../PagesCarousel/PagesCarousel';
+import "./Carousel.css";
+import {
+  updatePageActiveSlide,
+  useGenerateVariableCarousel,
+  useSlideFeature,
+} from "../../hooks/useSlideFeature";
+import CarouselSlide from "../CarouselSlide/CarouselSlide";
+import PagesCarousel from "../PagesCarousel/PagesCarousel";
 
 const dataListRaw = [
   {
@@ -69,9 +73,9 @@ const Carousel = () => {
     { initIsIntervalModeRef: isIntervalMode, secondTimeInterval: 5 },
     timeout,
     setRealPage,
-    realPage
+    realPage,
+    isDisplayLayerBlock
   );
-  console.log({realPage, pageActive});
   return (
     <div className="carousel-slide-list">
       {isDisplayLayerBlock && (

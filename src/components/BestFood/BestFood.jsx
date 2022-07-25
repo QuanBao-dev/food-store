@@ -1,29 +1,76 @@
+import "./BestFood.css";
+
 import { useRef } from "react";
 import { useViewportAnimationDisplay } from "../../hooks/useViewportAnimationDisplay";
-import "./BestFood.css";
+
 const BestFood = () => {
-  const bestFoodContainerRef = useRef();
+  const heading1Ref = useRef();
+  const heading2Ref = useRef();
+  const highlightRef = useRef();
+  const buttonOrderNowRef = useRef();
+
   useViewportAnimationDisplay(
-    bestFoodContainerRef,
+    heading1Ref,
     0.5,
     {
       opacity: 0,
-      transform: "translateY(10px)",
     },
     {
       opacity: 1,
-      transform: "translateY(0)",
     },
     0
   );
+
+  useViewportAnimationDisplay(
+    heading2Ref,
+    0.5,
+    {
+      opacity: 0,
+      transform: "translateX(-100%)",
+    },
+    {
+      opacity: 1,
+      transform: "translateX(0)",
+    },
+    0.5
+  );
+
+  useViewportAnimationDisplay(
+    highlightRef,
+    0.5,
+    {
+      opacity: 0,
+      transform: "translateX(-100%)",
+    },
+    {
+      opacity: 1,
+      transform: "translateX(0)",
+    },
+    1
+  );
+
+  useViewportAnimationDisplay(
+    buttonOrderNowRef,
+    0.5,
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+    },
+    1.5
+  );
+
   return (
-    <div className="best-food-container" ref={bestFoodContainerRef}>
-      <div>Best food</div>
-      <div>
+    <div className="best-food-container">
+      <div ref={heading1Ref}>Best food</div>
+      <div ref={heading2Ref}>
         Super delicious Steak <span className="high-light-text">Hamburger</span>
       </div>
-      <div className="high-light-text">$25.00</div>
-      <button>Order now</button>
+      <div className="high-light-text" ref={highlightRef}>
+        $25.00
+      </div>
+      <button ref={buttonOrderNowRef}>Order now</button>
     </div>
   );
 };

@@ -1,0 +1,18 @@
+.statistic-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 104, 104);
+  padding: 4rem 0;
+  color: white;
+}
+
+.statistic-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 1rem;
+}

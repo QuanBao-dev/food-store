@@ -1,0 +1,62 @@
+.step-item{
+  padding: 1rem;
+  box-shadow: 0 0 10px 1px rgba(92, 91, 91, 0.11);
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.step-item-arrow{
+  margin-bottom: 4rem;
+}
+
+.step-item:hover .step-number{
+  background-color: rgb(248, 86, 86);
+}
+
+.step-item:hover .step-number span{
+  background-color: white;
+  color: rgb(248, 86, 86);
+}
+
+.step-item:hover .text-description{
+  color: rgb(248, 86, 86);
+}
+
+.step-item img{
+  border-radius: 50%;
+}
+
+.step-item .step-number{
+  position: absolute;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  border-radius: 50%;
+  padding: 0.4rem;
+  top: -10px;
+  right: -5px;
+  background-color: white;
+}
+
+.step-item .step-number span{
+  display: block;
+  width: 50px;
+  height: 50px;
+  padding: 3px;
+  background-color: rgb(248, 86, 86);
+  border-radius: 50%;
+  font-weight: 600;
+  transition: 0.5s;
+}
+
+.step-item .text-description{
+  font-weight: 600;
+  position: absolute;
+  bottom: -40px;
+  font-size: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  transition: 0.5s;
+}

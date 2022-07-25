@@ -7,6 +7,7 @@ const StatisticItem = ({ amount, isLarger, name }) => {
   const [countState, setCountState] = useState(0);
   useEffect(() => {
     const subscription = fromEvent(window,"scroll").subscribe(() => {
+      if(!statisticItemRef.current) return;
       const { y, height } = statisticItemRef.current.getBoundingClientRect();
       if(y - window.innerHeight + height < 0){
         setIsStartCounting(true)

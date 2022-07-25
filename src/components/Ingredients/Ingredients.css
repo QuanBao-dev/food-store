@@ -50,3 +50,13 @@
 .ingredients-column-section-container.right .ingredients-ribbon{
   margin-left: 3rem;
 }
+
+@media (max-width:945px) {
+  .ingredients-column-section-container{
+    width: 100%;
+  }
+
+  .ingredients-column-section-container.right{
+    padding-top: 3.6rem;
+  }
+}
