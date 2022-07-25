@@ -1,0 +1,169 @@
+.total-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.checkout-wrapper {
+  width: 90%;
+  margin: 2rem auto;
+}
+
+.payment-info-section {
+  width: 30%;
+  padding: 2.5rem;
+  background-color: rgba(220, 220, 220, 0.178);
+}
+
+.payment-info-section input{
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(144, 143, 143, 0.192);
+  width: 100%;
+  padding-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.checkout-container h1 {
+  font-size: 2rem;
+}
+
+.checkout-wrapper {
+  display: flex;
+}
+
+.ordering-cart-section {
+  width: 65%;
+  margin-right: 4rem;
+  padding: 2.5rem;
+}
+
+.ordering-cart-table tr th {
+  font-size: 1.3rem;
+}
+
+.ordering-cart-section th,
+td {
+  text-align: left;
+}
+
+.ordering-cart-section td {
+  padding: 1.4rem 0;
+}
+
+.ordering-cart-section tr th {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.116);
+  padding-bottom: 1rem;
+}
+
+.ordering-cart-table {
+  width: 100%;
+  border-spacing: 0;
+  border-bottom: 1px solid rgb(180, 180, 180);
+  margin-bottom: 1rem;
+}
+
+.ordering-cart-table th:nth-child(1) {
+  width: 60%;
+}
+.ordering-cart-table th:nth-child(2) {
+  width: 20%;
+}
+.ordering-cart-table th:nth-child(3) {
+  width: 20%;
+}
+
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-wrapper span:nth-child(2) {
+  width: 50px;
+}
+
+.quantity-wrapper span:nth-child(1),
+.quantity-wrapper span:nth-child(3) {
+  cursor: pointer;
+  color: rgb(162, 162, 162);
+  transition: 0.5s;
+}
+
+.quantity-wrapper span:nth-child(1):hover,
+.quantity-wrapper span:nth-child(3):hover {
+  color: black;
+}
+
+.quantity-container span {
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ordering-cart-table td:nth-child(4) i {
+  font-size: 1.4rem;
+  display: block;
+  cursor: pointer;
+  color: rgb(146, 146, 146);
+  transition: 0.5s;
+}
+
+.ordering-cart-table td:nth-child(4) i:hover {
+  color: black;
+}
+
+.payment-method-wrapper {
+  display: flex;
+  margin-bottom: 1rem;
+  font-weight: 650;
+}
+
+h4 {
+  color: rgb(163, 163, 163);
+}
+
+.check-out-button{
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  background-color: rgb(255, 72, 0);
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  margin-top: 1rem;
+}
+
+.check-out-button:active{
+  background-color: brown;
+}
+
+.total-container {
+  display: flex;
+  font-size: 1.1rem;
+}
+
+.total-wrapper:nth-child(1) {
+  color: rgba(201, 201, 201, 0.76);
+  margin-right: 1.5rem;
+}
+.total-wrapper:nth-child(2) {
+  margin-left: 1.5rem;
+}
+
+.total-wrapper div {
+  margin-bottom: 1rem;
+}
+
+.total-wrapper {
+  flex-direction: column;
+}
+
+.payment-method-wrapper.active .check-box::before {
+  background-color: red;
+}
