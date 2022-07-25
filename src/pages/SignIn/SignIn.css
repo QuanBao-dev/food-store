@@ -1,5 +1,6 @@
 .sign-in-wrapper{
-  width: 400px;
+  max-width: 400px;
+  width: 80%;
   display: flex;
   position: absolute;
   flex-direction: column;

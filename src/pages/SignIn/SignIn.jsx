@@ -15,9 +15,7 @@ const SignIn = ({ updateUser }) => {
   const checkboxRef = useRef();
   const [indexTitleName, setIndexTitleName] = useState(0);
 
-  useEffect(() => {
-    window.scroll({ top: 0 });
-  }, []);
+  window.scroll({ top: 0 });
 
   useEffect(() => {
     if (usernameRef.current) usernameRef.current.value = "";
