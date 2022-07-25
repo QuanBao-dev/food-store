@@ -1,0 +1,8 @@
+.section-products-shop{
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
