@@ -2,13 +2,14 @@ import "./BestFood.css";
 
 import { useRef } from "react";
 import { useViewportAnimationDisplay } from "../../hooks/useViewportAnimationDisplay";
+import { useHistory } from "react-router-dom";
 
 const BestFood = () => {
   const heading1Ref = useRef();
   const heading2Ref = useRef();
   const highlightRef = useRef();
   const buttonOrderNowRef = useRef();
-
+  const history = useHistory();
   useViewportAnimationDisplay(
     heading1Ref,
     0.5,
@@ -70,7 +71,14 @@ const BestFood = () => {
       <div className="high-light-text" ref={highlightRef}>
         $25.00
       </div>
-      <button ref={buttonOrderNowRef}>Order now</button>
+      <button
+        ref={buttonOrderNowRef}
+        onClick={() => {
+          history.push("/shop");
+        }}
+      >
+        Order now
+      </button>
     </div>
   );
 };

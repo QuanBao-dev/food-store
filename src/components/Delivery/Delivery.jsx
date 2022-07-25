@@ -4,6 +4,7 @@ import { useRef } from "react";
 
 import { useContainerResponsive } from "../../hooks/useContainerResponsive";
 import { useViewportAnimationDisplay } from "../../hooks/useViewportAnimationDisplay";
+import { useHistory } from "react-router-dom";
 
 const Delivery = () => {
   const deliveryContainerRef = useRef();
@@ -13,6 +14,7 @@ const Delivery = () => {
   const buttonOrderRef = useRef();
   const imageOrderRef = useRef();
   const deliveryRightSectionRef = useRef();
+  const history = useHistory();
   useContainerResponsive(deliveryContainerRef);
 
   useViewportAnimationDisplay(
@@ -121,7 +123,13 @@ const Delivery = () => {
             <div>Delivery Order Num</div>
             <div className="phone-number">123-59794069</div>
           </div>
-          <button className="button-order" ref={buttonOrderRef}>
+          <button
+            className="button-order"
+            ref={buttonOrderRef}
+            onClick={() => {
+              history.push("/shop");
+            }}
+          >
             ORDER NOW
           </button>
         </div>
