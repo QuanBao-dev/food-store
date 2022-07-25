@@ -1,0 +1,7 @@
+.shop-products-layout-options{
+  cursor: pointer;
+}
+
+.shop-products-layout-options i.active{
+  color: red;
+}

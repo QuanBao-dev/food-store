@@ -12,6 +12,7 @@ import Statistic from "../../components/Statistic/Statistic";
 import Reviews from "../../components/Reviews/Reviews";
 
 const Home = () => {
+  window.scroll({ top: 0 });
   return (
     <div style={{ overflow: "hidden" }}>
       <Carousel />

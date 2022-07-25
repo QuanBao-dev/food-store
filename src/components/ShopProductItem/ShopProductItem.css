@@ -1,0 +1,123 @@
+.shop-product-list .shop-product-item {
+  flex: 1 1 200px;
+  width: 20%;
+  margin: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0px 0px 1px 1px rgb(233, 233, 233);
+  border-radius: 10px;
+  transition: 0.3s;
+  text-decoration: none;
+  color: black;
+  background-color: rgb(248, 242, 239);
+}
+
+.product-description.small-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.shop-product-list.vertical .shop-product-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.shop-product-list.vertical .shop-product-item .product-image {
+  max-width: 300px;
+  margin-right: 1rem;
+}
+
+.shop-product-list .shop-product-item:hover {
+  box-shadow: 0 0 10px 1px rgb(136, 136, 136);
+}
+
+.shop-product-list .shop-product-item:hover .container-add-to-cart {
+  transform: translateX(0);
+}
+
+.shop-product-list .shop-product-item .product-image {
+  width: 100%;
+  position: relative;
+  height: 170px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.shop-product-list .shop-product-item .product-rate-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0.2rem;
+  color: white;
+  font-size: 2.4rem;
+  text-shadow: 3px 2px #00000069;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+}
+
+.shop-product-list .shop-product-item .product-rate-container i {
+  font-size: 1.2rem;
+  margin-right: 0.3rem;
+}
+
+.shop-product-list .shop-product-item .product-rate-container span {
+  margin-right: 0.3rem;
+}
+
+.container-add-to-cart {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: white;
+  transition: 0.4s;
+  transform: translateX(100px);
+}
+
+.container-add-to-cart > div:nth-child(1),
+.container-add-to-cart > div:nth-child(2) {
+  background-color: rgba(0, 0, 0, 0.493);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin: 0.3rem;
+  border-radius: 50%;
+  transition: 0.5s;
+  z-index: 10;
+}
+
+.container-add-to-cart > div:nth-child(1):hover,
+.container-add-to-cart > div:nth-child(2):hover {
+  color: red;
+}
+
+.shop-product-item .product-name {
+  margin: 0;
+  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+}
+
+.shop-product-item img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.container-address-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-address-price i {
+  color: red;
+}
+
+.small-text {
+  font-size: 0.9rem;
+}

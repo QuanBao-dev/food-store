@@ -1,0 +1,21 @@
+.shop-page-pagination{
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  list-style-type: none;
+  flex-wrap: wrap ;
+}
+
+.shop-page-pagination li{
+  margin: 0.5rem;
+  font-size: 1rem;
+  padding: 0.3rem 1rem;
+  box-shadow: 0 0 3px 1px rgb(156, 156, 156);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.shop-page-pagination li.active{
+  background-color: rgb(255, 109, 109);
+  color: white;
+}

@@ -1,0 +1,15 @@
+.shop-product-list{
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  width: 100%;
+}
+
+.shop-product-list.vertical{
+  flex-direction: column;
+}
+
+.shop-product-list.vertical a{
+  width: 95%;
+}

@@ -1,0 +1,25 @@
+.counter-container{
+  display: flex;
+  align-items: center;
+}
+
+.counter-container > div{
+  margin-right: 1rem; 
+}
+
+.count-up-button,
+.count-down-button{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgb(224, 224, 224);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.count-up-button > i,
+.count-down-button > i{
+  font-size: 0.7rem;
+}
