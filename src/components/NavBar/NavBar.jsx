@@ -19,8 +19,7 @@ const NavBar = ({ cart, initCartDispatch }) => {
   const history = useHistory();
   const menuSymbolContainerRef = useRef();
   useEffect(() => {
-    if (cart.length > 0)
-      window.localStorage.setItem("shopCart", JSON.stringify(cart));
+    window.localStorage.setItem("shopCart", JSON.stringify(cart));
   }, [cart]);
   useEffect(() => {
     initCartDispatch();

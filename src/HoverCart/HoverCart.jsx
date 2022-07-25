@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 const HoverCart = ({ cart, hoverCartContainerRef, isMobile }) => {
-  if (isMobile) return <div ref={hoverCartContainerRef}></div>;
+  if (isMobile || cart.length === 0)
+    return <div ref={hoverCartContainerRef}></div>;
   return (
     <div className="hover-cart-container" ref={hoverCartContainerRef}>
       <ul className="hover-cart-wrapper">

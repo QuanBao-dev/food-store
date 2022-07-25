@@ -90,7 +90,7 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  margin-bottom: 1rem;
+  padding-bottom: 1rem;
 }
 
 .container-buttons button {
